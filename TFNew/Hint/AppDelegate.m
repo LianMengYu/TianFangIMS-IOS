@@ -445,7 +445,8 @@
     if(u == nil)
         return;
     
-    RCUserInfo *user = [[RCUserInfo alloc] initWithUserId:u._authtoken name:u._userName portrait:nil];
+    RCUserInfo *user = [[RCUserInfo alloc] initWithUserId:u._userId
+                                                     name:u._userName portrait:nil];
     [RCIM sharedRCIM].currentUserInfo = user;
     user.portraitUri = u._avatar;
     [RCIMClient sharedRCIMClient].currentUserInfo = user;
