@@ -552,7 +552,7 @@
 
             TeamMembersViewController *team = [[TeamMembersViewController alloc] init];
             team.hidesBottomBarWhenPushed = YES;
-            team._treeLevel = [NSMutableArray arrayWithObject:@"我的"];
+            team._treeLevel = [NSMutableArray arrayWithObject:@{@"title":@"我的", @"controller":self}];
             team._teamOrg = _tfOrg;
             [self.navigationController pushViewController:team animated:YES];
 
@@ -564,7 +564,7 @@
             
             TeamMembersViewController *team = [[TeamMembersViewController alloc] init];
             team.hidesBottomBarWhenPushed = YES;
-            team._treeLevel = [NSMutableArray arrayWithObject:@"我的"];
+            team._treeLevel = [NSMutableArray arrayWithObject:@{@"title":@"我的", @"controller":self}];
             team._teamOrg = t;
             [self.navigationController pushViewController:team animated:YES];
             

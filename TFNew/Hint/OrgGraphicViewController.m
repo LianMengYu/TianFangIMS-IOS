@@ -23,7 +23,7 @@
 @property (nonatomic, strong) NSMutableDictionary *_indexLMainBtns;
 
 @property (nonatomic, weak) UINavigationController *_navictrl;
-
+@property (nonatomic, weak) UIViewController *_ctrl;
 @end
 
 @implementation OrgGView
@@ -33,6 +33,7 @@
 @synthesize _indexLMainBtns;
 
 @synthesize _navictrl;
+@synthesize _ctrl;
 
 - (id) initWithFrame:(CGRect)frame
 {
@@ -349,7 +350,7 @@
 - (void) jumpUserMembs:(TeamOrg*)team{
     
     TeamMembersViewController *teamCtrl = [[TeamMembersViewController alloc] init];
-    teamCtrl._treeLevel = [NSMutableArray arrayWithObject:@"组织机构"];
+    teamCtrl._treeLevel = [NSMutableArray arrayWithObject:@{@"title":@"组织机构", @"controller":self._ctrl}];
     teamCtrl._teamOrg = team;
     
     [self._navictrl pushViewController:teamCtrl animated:YES];
@@ -443,6 +444,7 @@
     [_orgView drawOrgTils:_team];
     [content addSubview:_orgView];
     _orgView._navictrl = self.navigationController;
+    _orgView._ctrl = self;
     
     [content setContentSize:CGSizeMake(CGRectGetWidth(_orgView.frame), content.frame.size.height)];
 

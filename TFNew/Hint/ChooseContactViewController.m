@@ -415,8 +415,21 @@
             
             if([v isKindOfClass:[NSDictionary class]])
             {
-                [block_self saveGroup:nil];
-                return;
+                int code = [[v objectForKey:@"code"] intValue];
+                if(code == 200)
+                {
+                    [block_self saveGroup:nil];
+                }
+                else
+                {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                                                                    message:@"出错了"
+                                                                   delegate:nil
+                                                          cancelButtonTitle:@"OK"
+                                                          otherButtonTitles:nil, nil];
+                    [alert show];
+                }
+                
             }
             
         };
@@ -446,10 +459,9 @@
 }
 
 - (void) saveGroup:(NSDictionary*)group{
-    
-    
-    //[[GoGoDB sharedDBInstance] saveGroupInfo:group];
-    
+
+    [_membs removeAllObjects];
+
     [self hiddenMembersPannel];
     
     [self dismissViewControllerAnimated:YES completion:nil];
